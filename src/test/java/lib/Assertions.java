@@ -176,12 +176,14 @@ public class Assertions {
 
     public static void assertResponseTextEquals(Response response, String expectedAnswer) {
         assertEquals(response.asString(), expectedAnswer,
-                String.format("Response is different. Expected '%s' vs. Actual '%s'", expectedAnswer, response.asString()));
+                String.format("Response is different. Expected '%s' vs. Actual '%s'", expectedAnswer,
+                        response.asString()));
     }
 
     public static void assertResponseCodeEquals(Response response, int expectedStatusCode) {
         assertEquals(response.statusCode(), expectedStatusCode,
-                String.format("Status Code is different. Expected '%s' vs. Actual '%s'", expectedStatusCode, response.statusCode()));
+                String.format("Status Code is different. Expected '%s' vs. Actual '%s'", expectedStatusCode,
+                        response.statusCode()));
     }
 
     public static void assertJsonHasField(Response response, String expectedFieldName) {
@@ -200,7 +202,6 @@ public class Assertions {
 
     public static void assertResponse(Response response, UserRegisterDataModel testData) {
         if (testData.getWhatToTest() != null && testData.getWhatToTest().length != 0) {
-            //add-on to JUnit
             SoftAssert softAssert = new SoftAssert();
             Arrays.stream(testData.getWhatToTest()).forEach(s -> {
                 //WhatToTest - array from json
