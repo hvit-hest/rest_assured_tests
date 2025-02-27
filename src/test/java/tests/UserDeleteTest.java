@@ -8,12 +8,9 @@ import io.qameta.allure.Feature;
 import lib.ApiCoreRequests;
 import lib.Assertions;
 import lib.BaseTestCase;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.MethodSource;
 import org.testng.annotations.Test;
 
-//@Feature("Delete tests")
+@Feature("Delete tests")
 public class UserDeleteTest extends BaseTestCase {
     ApiCoreRequests apiCoreRequests = new ApiCoreRequests();
 
@@ -72,7 +69,7 @@ public class UserDeleteTest extends BaseTestCase {
                 /*Assertions.assertResponseCodeEquals(user2.getResponse("deleteResponse"), 200);
                 Assertions.assertResponseTextEquals(user2.getResponse("deleteResponse"),"");*/
                 apiCoreRequests.loginUser(user1);
-                Assertions.assertResponseCodeEquals(user1.getResponse("loginResponse"),200);
+                Assertions.assertResponseCodeEquals(user1.getResponse("loginResponse"), 200);
                 Assertions.assertResponseTextEquals(user1
                         .getResponse("loginResponse"), String.format("{\"user_id\":%s}", user1.getUserID()));
                 break;

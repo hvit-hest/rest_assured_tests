@@ -22,7 +22,7 @@ import java.util.Map;
 public class UserRegisterTest extends BaseTestCase {
     ApiCoreRequests apiCoreRequests = new ApiCoreRequests();
 
-    @Test(testName = "Create user with existing email")
+    @Test(testName = "Negative. Create user with existing email")
     public void   testCreateUserWithExistingEmail() {
         String email = "vinkotov@example.com";
         Map<String, String> userData = new HashMap<String, String>() {{
@@ -50,6 +50,14 @@ public class UserRegisterTest extends BaseTestCase {
         Response response = apiCoreRequests.requestGenerator(testData, testData.getRequestDescription());
         Assertions.assertResponse(response, testData);
     }
+
+    @Test(testName = "Positive. Try to create user.", dataProvider = "provideUserRegisterPositiveData", dataProviderClass = DataProviders.class)
+    public void  userRegisterPositiveTest(UserRegisterDataModel testData) {
+        //Allure.description(testData.getTestDescription());
+        Response response = apiCoreRequests.requestGenerator(testData, testData.getRequestDescription());
+        Assertions.assertResponse(response, testData);
+    }
+
 }
 
    /*//@DisplayName("Negative tests. Create user.")

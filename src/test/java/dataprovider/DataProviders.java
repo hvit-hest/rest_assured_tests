@@ -20,6 +20,7 @@ public class DataProviders {
         return DataReaders.readJson("UserRegisterPositiveData.json", type).toArray();
     }
 
+    @DataProvider(name = "provideUserLoginPositiveData")
     public Object[] provideUserLoginPositiveData() {
         return DataReaders.readJson("UserLoginPositiveData.json", type).toArray();
     }

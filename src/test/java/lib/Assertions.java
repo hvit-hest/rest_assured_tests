@@ -162,13 +162,13 @@ public class Assertions {
         softAssert.assertAll();
     }
 
-    public static void assertJsonByName(Response response, String name, int expectedValue) {
+    public static void assertJsonByKeyNameAndValue(Response response, String name, int expectedValue) {
         response.then().assertThat().body("$", hasKey(name));
         int value = response.jsonPath().getInt(name);
         assertEquals(value, expectedValue, "JSON value is not equal to expected value");
     }
 
-    public static void assertJsonByName(Response response, String name, String expectedValue) {
+    public static void assertJsonByKeyNameAndValue(Response response, String name, String expectedValue) {
         response.then().assertThat().body("$", hasKey(name));
         String value = response.jsonPath().getString(name);
         assertEquals(value, expectedValue, "JSON value is not equal to expected value");
@@ -241,6 +241,12 @@ public class Assertions {
                                 String.format("Actual username '%s' vs. expected '%s'",
                                         userNameActual, userNameExpected));
                         break;
+                    case "user_id":
+                        String userIdExpected = testData.getUserData().get("user_id");
+                        String userIdActual = String.valueOf(response.jsonPath().getInt("user_id"));
+                        assertEquals(userIdActual, userIdExpected, "Users' IDs are not the same");
+                        break;
+
                     default:
                         throw new IllegalArgumentException(String.format("Test '%s' is not implemented yet", testData.getExpectedValues().get(s)));
                 }

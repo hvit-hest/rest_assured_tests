@@ -111,6 +111,7 @@ public class User {
 
     public void setUserID() {
         this.userID = lastResponses.get("createResponse").body().jsonPath().get("id");
+        this.userData.put("user_id", this.userID);
     }
 
 @Override
