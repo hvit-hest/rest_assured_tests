@@ -4,6 +4,8 @@ import datamodel.User;
 import datamodel.UserRegisterDataModel;
 import dataprovider.DataProviders;
 import io.qameta.allure.Allure;
+import io.qameta.allure.Description;
+import io.qameta.allure.Epic;
 import io.qameta.allure.Feature;
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
@@ -15,6 +17,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 
+@Epic("Test user API")
 @Feature("Get user data cases")
 public class UserGetTest extends BaseTestCase {
     ApiCoreRequests apiCoreRequests = new ApiCoreRequests();
@@ -32,6 +35,7 @@ public class UserGetTest extends BaseTestCase {
     }
 
     @Test(testName = "Positive. Authorized user gets his own data")
+    @Description("This test checks that a successfully authorized user can get his data")
     public void testGetUserDetailsAuthAsSameUser() {
 
         Map<String, String> userData = new HashMap<String, String>() {{
@@ -60,7 +64,7 @@ public class UserGetTest extends BaseTestCase {
 
     @Test(testName = "Negative. Get username of another user only.", dataProvider = "provideTakeUserInfoNegativeData", dataProviderClass = DataProviders.class)
     public void takeUserInfoNegativeTest(UserRegisterDataModel testData) {
-        //Allure.description(testData.getTestDescription());
+        Allure.description(testData.getTestDescription());
 
         //CREATE TWO USERS
         /*create  two users for the test

@@ -4,19 +4,18 @@ import datamodel.User;
 import datamodel.UserRegisterDataModel;
 import dataprovider.DataProviders;
 import io.qameta.allure.Allure;
+import io.qameta.allure.Epic;
 import io.qameta.allure.Feature;
 import io.restassured.response.Response;
 import lib.ApiCoreRequests;
 import lib.Assertions;
 import lib.BaseTestCase;
 import lib.DataGenerator;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.MethodSource;
 import org.testng.annotations.Test;
 
 import java.util.Map;
 
+@Epic("Test user API")
 @Feature("Change user data cases")
 public class UserPutTest extends BaseTestCase {
     private ApiCoreRequests apiCoreRequests = new ApiCoreRequests();

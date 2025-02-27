@@ -3,6 +3,9 @@ package tests;
 import datamodel.User;
 import datamodel.UserRegisterDataModel;
 import dataprovider.DataProviders;
+import io.qameta.allure.Description;
+import io.qameta.allure.Epic;
+import io.qameta.allure.Feature;
 import io.restassured.response.Response;
 import lib.ApiCoreRequests;
 import lib.Assertions;
@@ -17,8 +20,8 @@ import java.util.Map;
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
 
-//@Epic("Authorization cases")
-//@Feature("Authorization")
+@Epic("Test user API")
+@Feature("Authorization")
 public class UserAuthTest extends BaseTestCase {
     private final ApiCoreRequests apiCoreRequests = new ApiCoreRequests();
     String baseUriAuth = "https://playground.learnqa.ru/api/user/auth";
@@ -27,21 +30,8 @@ public class UserAuthTest extends BaseTestCase {
     private int userIdOnAuth;
     User user2 = new User("2");
 
-    //@BeforeMethod
-    public void loginUser() {
-        Map<String, String> authData = new HashMap<>();
-        authData.put("email", "vinkotov@example.com");
-        authData.put("password", "1234");
-        Response responseGetAuth = apiCoreRequests
-                .makePostRequest("https://playground.learnqa.ru/api/user/login", authData);
-
-        cookie = getCookie(responseGetAuth, "auth_sid");
-        header = getHeader(responseGetAuth, "x-csrf-token");
-        userIdOnAuth = getIntFromJson(responseGetAuth, "user_id");
-    }
-
     @Test(testName = "Positive. Auth user")
-//    @Description("This test successfully authorizes a user by email and password")
+    @Description("This test successfully authorizes a user by email and password")
     public void testAuthUser() {
         apiCoreRequests.loginUser(user2);
         apiCoreRequests.getUser(user2);
@@ -57,7 +47,7 @@ public class UserAuthTest extends BaseTestCase {
     }
 
     @Test(testName = "Negative. Auth user", dataProvider = "cookiesOrHeadersOnly")
-//    @Description("This test checks authorization status w/o sending cookie or token")
+    @Description("This test checks authorization status w/o sending cookie or token")
     public void testNegativeAuthUser(String condition) {
         apiCoreRequests.loginUser(user2);
         Response loginResponse = user2.getLoginResponse();
@@ -80,7 +70,7 @@ public class UserAuthTest extends BaseTestCase {
     }
 
     @Test(testName = "Positive. Auth user. JSON", dataProvider = "provideUserLoginPositiveData", dataProviderClass = DataProviders.class)
-//    @Description("This test successfully authorizes a user by email and password")
+    @Description("This test successfully authorizes a user by email and password")
     public void testAuthUserAlt(UserRegisterDataModel testData) {
 
         User user = apiCoreRequests.createUser();

@@ -1,19 +1,24 @@
 package tests;
 
+import io.qameta.allure.Description;
+import io.qameta.allure.Epic;
+import io.qameta.allure.Feature;
 import io.restassured.RestAssured;
 import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
 import lib.Assertions;
 import lib.BaseTestCase;
 import lib.DataGenerator;
-import org.junit.jupiter.api.Test;
+import org.testng.annotations.Test;
 
 import java.util.HashMap;
 import java.util.Map;
 
-
+@Epic("Test user API")
+@Feature("Edit tests")
 public class UserEditTest extends BaseTestCase {
     @Test
+    @Description("Generate user, Login user, Edit user's name")
     public void testEditJustCreatedTest() {
         //GENERATE USER
         Map<String, String> userData = DataGenerator.getRegistrationData();

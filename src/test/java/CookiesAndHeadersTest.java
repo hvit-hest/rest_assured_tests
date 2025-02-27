@@ -1,5 +1,6 @@
 import datamodel.CookiesAndHeadersDataModel;
 import dataprovider.CookiesHeadersProvider;
+import io.qameta.allure.Description;
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
@@ -11,7 +12,8 @@ import static lib.Assertions.assertHeaderSSSByNameAndValue;
 public class CookiesAndHeadersTest {
     private Response responseToTest;
 
-    @Test(dataProvider = "provideCookiesAndHeadersData", dataProviderClass = CookiesHeadersProvider.class)
+    @Test(testName = "Cookies and Headers", dataProvider = "provideCookiesAndHeadersData", dataProviderClass = CookiesHeadersProvider.class)
+    @Description("Check cookies and headers expected")
     public void cookiesAndHeadersTest(CookiesAndHeadersDataModel testData) {
         RequestSpecification spec = RestAssured.given();
         spec.baseUri(testData.getTestUrl());

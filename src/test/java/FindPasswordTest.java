@@ -2,7 +2,7 @@ import io.restassured.RestAssured;
 import io.restassured.internal.path.xml.NodeBase;
 import io.restassured.path.xml.XmlPath;
 import io.restassured.response.Response;
-import org.junit.jupiter.api.Test;
+import org.testng.annotations.Test;
 
 import java.util.HashSet;
 import java.util.List;
@@ -23,7 +23,7 @@ public class FindPasswordTest {
     @Test
     public void findPasswordTest() {
 
-        /*It can be done in future:
+        /*It can be done in the future:
         try to login without login field with password field only. 500?
         try to login with wrong login field without password field at all. 500?
         try to login without login and without password field. 500? */

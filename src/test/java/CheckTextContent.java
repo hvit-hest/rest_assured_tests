@@ -1,3 +1,4 @@
+import io.qameta.allure.Description;
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
 import org.testng.annotations.Test;
@@ -10,7 +11,8 @@ public class CheckTextContent {
     private String textExpected = "Hello, world";
     private String messageIfFail = "Content is not correct";
 
-    @Test
+    @Test (testName = "Check text content")
+    @Description("Find expected text in html body")
     public void checkTextContent() {
         Response response = RestAssured.get(urlToTest).andReturn();
         //print the response

@@ -4,17 +4,19 @@ import datamodel.User;
 import datamodel.UserRegisterDataModel;
 import dataprovider.DataProviders;
 import io.qameta.allure.Allure;
+import io.qameta.allure.Epic;
 import io.qameta.allure.Feature;
 import lib.ApiCoreRequests;
 import lib.Assertions;
 import lib.BaseTestCase;
 import org.testng.annotations.Test;
 
+@Epic("Test user API")
 @Feature("Delete tests")
 public class UserDeleteTest extends BaseTestCase {
     ApiCoreRequests apiCoreRequests = new ApiCoreRequests();
 
-    @Test(testName = "Try to delete user", dataProvider = "provideUserDeleteRequestData",
+    @Test(testName = "Negative. Try to delete user", dataProvider = "provideUserDeleteRequestData",
             dataProviderClass = DataProviders.class)
     public void deleteUserTest(UserRegisterDataModel testData) {
         Allure.description(testData.getTestDescription());
