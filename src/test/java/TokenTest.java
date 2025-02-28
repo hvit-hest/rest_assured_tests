@@ -1,3 +1,4 @@
+import io.qameta.allure.Description;
 import io.restassured.RestAssured;
 import io.restassured.path.json.JsonPath;
 import org.testng.annotations.Test;
@@ -13,7 +14,8 @@ public class TokenTest {
     private String statusReadyMessageExpected = "Job is ready";
     private String resultAssertMessageIfFail = "Result is absent";
 
-    @Test
+    @Test(testName = "Test status and result fields")
+    @Description("Test for string's length")
     public void tokenTest() {
 
         SoftAssert softAssert = new SoftAssert();

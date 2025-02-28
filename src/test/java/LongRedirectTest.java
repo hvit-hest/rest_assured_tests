@@ -1,3 +1,4 @@
+import io.qameta.allure.Description;
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
 import org.testng.annotations.Test;
@@ -9,7 +10,8 @@ public class LongRedirectTest {
     private final String lastLocationHeaderExpected = "https://www.learnqa.ru/";
     private final String messageIfFail = "\n Location Header is not correct. \n Actual: %s. \n Expected: %s";
 
-    @Test
+    @Test(testName = "Long redirect exercise")
+    @Description("Print redirect/location headers")
     public void longRedirectTest() {
         Response response = null;
         int counter = 0;

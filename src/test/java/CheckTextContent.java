@@ -11,7 +11,7 @@ public class CheckTextContent {
     private String textExpected = "Hello, world";
     private String messageIfFail = "Content is not correct";
 
-    @Test (testName = "Check text content")
+    @Test (testName = "Print text of response")
     @Description("Find expected text in html body")
     public void checkTextContent() {
         Response response = RestAssured.get(urlToTest).andReturn();

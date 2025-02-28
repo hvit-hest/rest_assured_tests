@@ -1,3 +1,4 @@
+import io.qameta.allure.Description;
 import io.restassured.RestAssured;
 import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
@@ -11,7 +12,8 @@ public class RedirectTest {
     private final String firstLocationHeaderExpected = "https://playground.learnqa.ru/";
     private final String messageIfFail = "\n URL for redirection is not correct. \n Actual: %s. \n Expected: %s";
 
-    @Test
+    @Test(testName ="Redirect exercise")
+    @Description("Print url of redirect/location header")
     public void redirectTest() {
         Response response = RestAssured
                 .given()

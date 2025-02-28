@@ -1,5 +1,6 @@
 import datamodel.UserAgentDataModel;
 import dataprovider.UserAgentProvider;
+import io.qameta.allure.Description;
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
@@ -11,7 +12,8 @@ public class UserAgentTest {
 
     private Response responseForCheck;
 
-    @Test(dataProvider = "userAgentData", dataProviderClass = UserAgentProvider.class)
+    @Test(testName = "User Agent Test", dataProvider = "userAgentData", dataProviderClass = UserAgentProvider.class)
+    @Description("Test response fields using different User Agent in request")
     public void serAgentTest(UserAgentDataModel testData) {
         RequestSpecification spec = RestAssured.given();
         spec.baseUri(testData.getTestUrl());

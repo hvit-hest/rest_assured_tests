@@ -1,3 +1,4 @@
+import io.qameta.allure.Description;
 import io.restassured.RestAssured;
 import io.restassured.path.json.JsonPath;
 import org.testng.annotations.Test;
@@ -9,7 +10,8 @@ public class ParsingJsonTest {
     private final String textOfTheSecondMessageExpected = "And this is a second message";
     private final String messageIfFail = "\n Content is not correct. \n Actual: %s. \n Expected: %s";
 
-    @Test
+    @Test(testName = "Parsing JSON exercise")
+    @Description("Parse JSON and print the second message")
     public void parsingJsonTest() {
         JsonPath responseJson = RestAssured.get(urlToTest).jsonPath();
         //print the json response to study it just for fun though the fun is not so big

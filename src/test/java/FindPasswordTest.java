@@ -1,3 +1,4 @@
+import io.qameta.allure.Description;
 import io.restassured.RestAssured;
 import io.restassured.internal.path.xml.NodeBase;
 import io.restassured.path.xml.XmlPath;
@@ -20,7 +21,8 @@ public class FindPasswordTest {
     private String notAuthorizedMessage = "You are NOT authorized";
 
 
-    @Test
+    @Test(testName = "Find password exercise")
+    @Description("Looking for password among the most common passwords")
     public void findPasswordTest() {
 
         /*It can be done in the future:
